@@ -16,6 +16,7 @@ service: sizeless
 provider:
   name: aws
   runtime: nodejs8.10
+  region: us-east-1
   memorySize: 256
   iamRoleStatements:
     - Effect: Allow
@@ -23,24 +24,24 @@ provider:
         - s3:GetObject
         - s3:PutObject
       Resource:
-        - 'arn:aws:s3:::*'
+        - "arn:aws:s3:::*"
 
 functions:
   sizeless:
     handler: handler.sizeless
     environment:
-      bucket: rodrigo-sizeless-tests
+      bucket: your-bucket-name-here
       pictureQualityLevel: 50
     events:
       - s3:
-          bucket: rodrigo-sizeless-tests
+          bucket: your-bucket-name-here
           event: s3:ObjectCreated:*
           rules:
-            # You may create a subfolder to allocate your uploads.
-            # - prefix: pictures/
+            - prefix: pictures/
             - suffix: .jpg
       - s3:
-          bucket: rodrigo-sizeless-tests
+          bucket: your-bucket-name-here
           event: s3:ObjectCreated:*
           rules:
+            - prefix: pictures/
             - suffix: .png

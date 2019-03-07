@@ -5,7 +5,7 @@ const Sharp = require('sharp')
 const S3    = new AWS.S3()
 const { basename, extname } = require('path')
 
-module.exports.handle = async ({ Records: records}, context) => {
+module.exports.sizeless = async ({ Records: records}, context) => {
   try {
     await Promise.all(records.map(async record => {
       const { key } = record.s3.object

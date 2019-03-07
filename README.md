@@ -8,11 +8,12 @@ This is a script that works by S3 events.
 
 When your bucket receives a new file, this script is going to automatically run to resize and optimize your uploaded picture.
 
-<br/>
+<br />
 
 ## Installation
 ### Dependencies
 * NodeJS & NPM.
+
 
 ### Guide
 * You shall need to install [Serverless](http://serverless.com) and to do that, open your terminal and run:
@@ -54,6 +55,10 @@ $ serverless config credentials -o --provider aws --key=YOUR_AWS_KEY --secret YO
 ```sh
 $ yarn deploy or npm run deploy
 ```
+
+<br />
+
+🚨 DO NOT forget to change your bucket name on `serverless.yml` and to create your `prefix` subfolder on your bucket as well. 🚨
 
 <br />
 
