@@ -14,13 +14,13 @@ module.exports.handle = async ({ Records: records}, context) => {
         Key: key
       }).promise()
 
-      const optimizedPicture = await Sharp(image.body)
+      const optimizedImage = await Sharp(image.body)
         .resize(1280, 720, { fit: 'inside', withoutEnlargement: true })
-        .toFormat('jpeg', { progressive: true, quality: process.env.pictureQualityLevel})
+        .toFormat('jpeg', { progressive: true, quality: process.env.imageQualityLevel})
         .toBuffer()
 
       await S3.putObject({
-        Body: optimizedPicture,
+        Body: optimizedImage,
         Bucket: process.env.bucket,
         ContentType: 'image/jpeg',
         Key: `sizeless/${basename(key, extname(key))}`
