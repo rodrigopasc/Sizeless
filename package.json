@@ -1,0 +1,17 @@
+{
+  "name": "sizeless",
+  "version": "1.0.0",
+  "description": "AWS Lambda script to optimize S3 images.",
+  "main": "handler.js",
+  "dependencies": {
+    "sharp": "^0.21.3"
+  },
+  "scripts": {
+    "predeploy": "rm -rf node_modules/sharp && npm install --platform=linux --arch=x64 --target=8.10.0 sharp",
+    "deploy": "serverless deploy -v",
+    "postdeploy": "rm -rf node_modules/sharp && npm install sharp"
+  },
+  "keywords": [],
+  "author": "Rodrigo Paschoaletto",
+  "license": "MIT"
+}

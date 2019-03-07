@@ -1,0 +1,11 @@
+# Created by https://www.gitignore.io/api/serverless
+# Edit at https://www.gitignore.io/?templates=serverless
+
+### Serverless ###
+# Ignore build directory
+.serverless
+node_modules/
+package-lock.json
+yarn-error.log
+
+# End of https://www.gitignore.io/api/serverless
