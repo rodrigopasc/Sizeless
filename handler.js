@@ -10,20 +10,20 @@ module.exports.sizeless = async ({ Records: records}, context) => {
     await Promise.all(records.map(async record => {
       const { key } = record.s3.object
       const image = await S3.getObject({
-        Bucket: ProcessingInstruction.env.bucket,
+        Bucket: process.env.bucket,
         Key: key
       }).promise()
 
       const optimizedImage = await Sharp(image.body)
         .resize(1280, 720, { fit: 'inside', withoutEnlargement: true })
-        .toFormat('jpeg', { progressive: true, quality: process.env.imageQualityLevel})
+        .toFormat('jpeg', { progressive: true, quality: 50 })
         .toBuffer()
 
       await S3.putObject({
         Body: optimizedImage,
         Bucket: process.env.bucket,
         ContentType: 'image/jpeg',
-        Key: `sizeless/${basename(key, extname(key))}`
+        Key: `sizeless/${basename(key, extname(key))}.jpg`
       }).promise()
     }))
 

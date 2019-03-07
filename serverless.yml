@@ -31,7 +31,6 @@ functions:
     handler: handler.sizeless
     environment:
       bucket: your-bucket-name-here
-      pictureQualityLevel: 50
     events:
       - s3:
           bucket: your-bucket-name-here
