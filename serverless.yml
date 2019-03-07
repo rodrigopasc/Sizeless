@@ -28,7 +28,7 @@ provider:
 
 functions:
   sizeless:
-    handler: handler.sizeless
+    handler: sizeless.handle
     environment:
       bucket: your-bucket-name-here
     events:
@@ -36,11 +36,11 @@ functions:
           bucket: your-bucket-name-here
           event: s3:ObjectCreated:*
           rules:
-            - prefix: pictures/
+            - prefix: uploads/
             - suffix: .jpg
       - s3:
           bucket: your-bucket-name-here
           event: s3:ObjectCreated:*
           rules:
-            - prefix: pictures/
+            - prefix: uploads/
             - suffix: .png

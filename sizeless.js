@@ -1,20 +1,21 @@
 'use strict'
 
 const AWS   = require('aws-sdk')
-const Sharp = require('sharp')
 const S3    = new AWS.S3()
+const sharp = require('sharp')
 const { basename, extname } = require('path')
 
-module.exports.sizeless = async ({ Records: records}, context) => {
+module.exports.handle = async ({ Records: records }, context) => {
   try {
     await Promise.all(records.map(async record => {
       const { key } = record.s3.object
+
       const image = await S3.getObject({
         Bucket: process.env.bucket,
         Key: key
       }).promise()
 
-      const optimizedImage = await Sharp(image.body)
+      const optimizedImage = await sharp(image.Body)
         .resize(1280, 720, { fit: 'inside', withoutEnlargement: true })
         .toFormat('jpeg', { progressive: true, quality: 50 })
         .toBuffer()
@@ -29,7 +30,7 @@ module.exports.sizeless = async ({ Records: records}, context) => {
 
     return {
       statusCode: 201,
-      body: {}
+      body: { ok: true }
     }
   } catch (error) {
     return error
