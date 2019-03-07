@@ -8,10 +8,11 @@ This is a script that works by S3 events.
 
 When your bucket receives a new file, this script is going to automatically run to resize and optimize your uploaded picture.
 
+<br/>
+
 ## Installation
 ### Dependencies
 * NodeJS & NPM.
-
 
 ### Guide
 * You shall need to install [Serverless](http://serverless.com) and to do that, open your terminal and run:
