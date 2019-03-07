@@ -58,7 +58,7 @@ $ yarn deploy or npm run deploy
 
 <br />
 
-🚨 DO NOT forget to change your bucket name on `serverless.yml` and to create your `prefix` subfolder on your bucket as well. 🚨
+🚨 **DO NOT** *forget to change your bucket name on `serverless.yml` and to create your `prefix` subfolder on your bucket as well.* 🚨
 
 <br />
 
