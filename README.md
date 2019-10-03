@@ -21,7 +21,6 @@ When your bucket receives a new file, this script is going to automatically run 
 ```sh
 $ npm install serverless -g
 ```
-(Sorry, it is not available with Yarn)
 
 <br/>
 
