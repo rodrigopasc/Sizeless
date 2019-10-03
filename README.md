@@ -19,7 +19,7 @@ When your bucket receives a new file, this script is going to automatically run 
 * You shall need to install [Serverless](http://serverless.com) and to do that, open your terminal and run:
 
 ```sh
-$ npm install serverless -g
+$ yarn global add serverless
 ```
 
 <br/>
